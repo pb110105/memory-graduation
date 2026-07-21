@@ -1,3 +1,14 @@
+FROM node:20 AS frontend
+
+WORKDIR /app
+
+COPY package*.json ./
+RUN npm ci
+
+COPY . .
+RUN npm run build
+
+
 FROM php:8.3-apache
 
 RUN apt-get update && apt-get install -y \
@@ -13,6 +24,8 @@ COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 WORKDIR /var/www/html
 
 COPY . .
+
+COPY --from=frontend /app/public/build ./public/build
 
 RUN composer install \
     --no-dev \
@@ -31,4 +44,4 @@ RUN printf '<Directory /var/www/html/public>\n\
 </Directory>\n' \
     >> /etc/apache2/apache2.conf
 
-CMD ["sh", "-c", "echo \"ENV_DB_USERNAME=[$DB_USERNAME]\" && php artisan config:clear && php artisan config:show database.connections.pgsql && php artisan migrate --force && exec apache2-foreground"]
+CMD ["sh", "-c", "php artisan config:clear && php artisan migrate --force && exec apache2-foreground"]
