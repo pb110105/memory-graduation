@@ -31,4 +31,4 @@ RUN printf '<Directory /var/www/html/public>\n\
 </Directory>\n' \
     >> /etc/apache2/apache2.conf
 
-CMD ["sh", "-c", "echo \"DB_USERNAME=$DB_USERNAME\" && php artisan config:clear && php artisan route:clear && php artisan view:clear && php artisan migrate --force && exec apache2-foreground"]
+CMD ["sh", "-c", "echo \"RAW_DB_USERNAME=$DB_USERNAME\" && php artisan config:clear && php artisan tinker --execute=\"dump(config('database.connections.pgsql.username'));\" && php artisan migrate --force && exec apache2-foreground"]
