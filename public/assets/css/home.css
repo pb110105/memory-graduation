@@ -1,5 +1,5 @@
-<style>
-        :root {
+
+:root {
             --background: #f8f5f0;
             --surface: #fffdf9;
             --primary: #4f6556;
@@ -9,7 +9,7 @@
             --muted: #747a75;
             --border: rgba(79, 101, 86, 0.15);
             --shadow: 0 24px 70px rgba(53, 72, 60, 0.13);
-        }
+    }
 
         * {
             margin: 0;
@@ -645,4 +645,3 @@
         display: none;
     }
 }
-</style>
