@@ -31,4 +31,4 @@ RUN printf '<Directory /var/www/html/public>\n\
 </Directory>\n' \
     >> /etc/apache2/apache2.conf
 
-CMD php artisan migrate --force && apache2-foreground
+CMD ["sh", "-c", "php artisan optimize:clear && echo \"DB_USERNAME=$DB_USERNAME\" && php artisan migrate --force && exec apache2-foreground"]
