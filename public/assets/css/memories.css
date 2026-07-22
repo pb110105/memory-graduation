@@ -1,13 +1,17 @@
 :root {
-    --background: #f3f5f2;
-    --surface: #ffffff;
-    --primary: #4f6556;
-    --primary-dark: #35483c;
-    --accent: #b69a68;
-    --text: #2e332f;
-    --muted: #747a75;
-    --border: rgba(79, 101, 86, 0.14);
-    --shadow: 0 18px 45px rgba(53, 72, 60, 0.09);
+    --background: #fff7f2;
+    --surface: #fffdf9;
+
+    --primary: #6f1d2c;
+    --primary-dark: #4a0c19;
+
+    --accent: #c9a45c;
+
+    --text: #3d2427;
+    --muted: #78686a;
+
+    --border: rgba(111, 29, 44, 0.14);
+    --shadow: 0 18px 45px rgba(74, 12, 25, 0.10);
 }
 
 * {
@@ -49,8 +53,8 @@ textarea {
     position: sticky;
     top: 0;
     z-index: 100;
-    border-bottom: 1px solid var(--border);
-    background: rgba(255, 255, 255, 0.94);
+    border-bottom: 1px solid rgba(111, 29, 44, 0.12);
+    background: rgba(255, 253, 249, 0.96);
     backdrop-filter: blur(14px);
 }
 
@@ -72,20 +76,36 @@ textarea {
     padding: 10px 16px;
     border: 1px solid var(--border);
     border-radius: 999px;
+    background: #fff8f3;
     color: var(--primary);
     font-size: 14px;
     font-weight: 600;
+    transition: 0.25s ease;
+}
+
+.back-link:hover {
+    border-color: var(--primary);
+    background: var(--primary);
+    color: #fff8f2;
 }
 
 .community-hero {
     padding: 70px 0 50px;
+
     background:
+        radial-gradient(
+            circle at 88% 20%,
+            rgba(201, 164, 92, 0.18),
+            transparent 32%
+        ),
         linear-gradient(
             135deg,
-            rgba(79, 101, 86, 0.97),
-            rgba(53, 72, 60, 0.94)
+            #7a2031 0%,
+            #651827 48%,
+            #4a0c19 100%
         );
-    color: white;
+
+    color: #fff8f2;
 }
 
 .community-hero-inner {
@@ -98,7 +118,7 @@ textarea {
 .eyebrow {
     display: inline-block;
     margin-bottom: 12px;
-    color: #eadcc2;
+    color: #e8d3a4;
     font-size: 13px;
     font-weight: 700;
     letter-spacing: 3px;
@@ -114,32 +134,41 @@ textarea {
 .community-hero p {
     max-width: 680px;
     margin-top: 20px;
-    color: rgba(255, 255, 255, 0.78);
+    color: rgba(255, 248, 242, 0.82);
     font-size: 17px;
 }
 
 .hero-stat {
     min-width: 210px;
     padding: 22px;
-    border: 1px solid rgba(255, 255, 255, 0.18);
+    border: 1px solid rgba(232, 211, 164, 0.4);
     border-radius: 22px;
-    background: rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.09);
+    box-shadow: 0 16px 40px rgba(45, 5, 14, 0.2);
+    backdrop-filter: blur(10px);
 }
 
 .hero-stat strong {
     display: block;
-    color: #eadcc2;
+    color: #e8d3a4;
     font-family: "Playfair Display", serif;
     font-size: 28px;
 }
 
 .hero-stat span {
-    color: rgba(255, 255, 255, 0.72);
+    color: rgba(255, 248, 242, 0.74);
     font-size: 14px;
 }
 
 .feed-section {
     padding: 45px 0 90px;
+
+    background: linear-gradient(
+        180deg,
+        #fffaf6 0%,
+        #fff5ee 55%,
+        #fbece5 100%
+    );
 }
 
 .feed-layout {
@@ -161,10 +190,10 @@ textarea {
 .event-card,
 .composer-card,
 .post-card {
-    border: 1px solid var(--border);
+    border: 1px solid rgba(111, 29, 44, 0.13);
     border-radius: 24px;
     background: var(--surface);
-    box-shadow: var(--shadow);
+    box-shadow: 0 18px 45px rgba(74, 12, 25, 0.10);
 }
 
 .profile-card {
@@ -177,7 +206,9 @@ textarea {
     height: 120px;
     margin: 0 auto 18px;
     object-fit: cover;
+    border: 3px solid rgba(201, 164, 92, 0.55);
     border-radius: 50%;
+    box-shadow: 0 12px 28px rgba(74, 12, 25, 0.16);
 }
 
 .profile-card h2 {
@@ -235,9 +266,16 @@ textarea {
     height: 48px;
     display: grid;
     place-content: center;
+    border: 1px solid rgba(201, 164, 92, 0.5);
     border-radius: 50%;
-    background: var(--primary);
-    color: white;
+
+    background: linear-gradient(
+        145deg,
+        #84263a,
+        #56121f
+    );
+
+    color: #fff8f2;
     font-weight: 700;
 }
 
@@ -267,13 +305,19 @@ textarea {
 .form-group input,
 .form-group textarea {
     width: 100%;
-    border: 1px solid var(--border);
+    border: 1px solid rgba(111, 29, 44, 0.16);
     border-radius: 15px;
-    background: #fbfcfa;
+    background: #fffaf7;
+    color: var(--text);
     outline: none;
+
     transition:
         border-color 0.2s ease,
         box-shadow 0.2s ease;
+}
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: #9b8b8d;
 }
 
 .form-group input {
@@ -289,7 +333,7 @@ textarea {
 .form-group input:focus,
 .form-group textarea:focus {
     border-color: var(--primary);
-    box-shadow: 0 0 0 4px rgba(79, 101, 86, 0.1);
+    box-shadow: 0 0 0 4px rgba(111, 29, 44, 0.11);
 }
 
 .upload-box {
@@ -309,23 +353,25 @@ textarea {
     display: grid;
     place-content: center;
     justify-items: center;
-    border: 1px dashed rgba(79, 101, 86, 0.35);
+    border: 1px dashed rgba(111, 29, 44, 0.32);
     border-radius: 18px;
-    background: #f9fbf8;
+    background: #fff8f3;
     color: var(--primary);
     cursor: pointer;
+
     transition:
         border-color 0.2s ease,
         background 0.2s ease;
 }
 
 .upload-box label:hover {
-    border-color: var(--primary);
-    background: #f4f7f3;
+    border-color: var(--accent);
+    background: #fdf0e7;
 }
 
 .upload-icon {
     margin-bottom: 4px;
+    color: var(--accent);
     font-size: 32px;
     line-height: 1;
 }
@@ -340,13 +386,31 @@ textarea {
     min-height: 50px;
     border: 0;
     border-radius: 15px;
-    background: var(--primary);
-    color: white;
+
+    background: linear-gradient(
+        135deg,
+        #7a2031,
+        #56121f
+    );
+
+    color: #fff8f2;
     font-weight: 700;
+    box-shadow: 0 12px 28px rgba(74, 12, 25, 0.2);
     cursor: pointer;
+
     transition:
         transform 0.2s ease,
         background 0.2s ease;
+}
+
+.submit-button:hover {
+    transform: translateY(-2px);
+
+    background: linear-gradient(
+        135deg,
+        #8f2c42,
+        #681827
+    );
 }
 
 .submit-button:hover {
@@ -366,7 +430,7 @@ textarea {
 
 .post-message {
     margin: 20px 0;
-    color: #525852;
+    color: #665457;
     font-size: 15px;
 }
 

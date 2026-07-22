@@ -38,7 +38,7 @@
     <header class="hero">
         <div class="container">
             <div class="hero-content reveal">
-                <p class="hero-small">Một hành trình của đức tin và phục vụ</p>
+                <p class="hero-small">Anh Lộc Bùi đừng khóc khi vào được trang web này nhé!!!</p>
 
                 <h1 class="hero-title">
                     Chúc mừng anh
@@ -50,6 +50,10 @@
                     Tốt nghiệp Giáo Lý Viên Cấp III.
                     Một chặng đường khép lại để mở ra hành trình mới,
                     nơi tình yêu, sự trưởng thành và tinh thần phục vụ tiếp tục được lan tỏa.
+                    Ba năm Đuốc hồng, một năm Horeb, sắp được hai năm Tabor – Một hành trình dài với
+                    4 năm nhiệm kỳ Trưởng Xứ Đoàn.
+                    Mặc dù tụi em chọc anh nhiều lắm nhưng sâu trong đó là cợt nhã, chọc thiệc.
+                    Nhưng anh cố lên, sắp được đổi tên tiktok rồi đó.
                 </p>
 
                 <div class="hero-meta reveal">
@@ -70,7 +74,7 @@
             <div class="container intro-grid">
                 <div class="intro-image reveal">
                     <img
-                        src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=1000&q=85"
+                        src="{{ asset('assets/image/LocBui2.png') }}"
                         alt="Ảnh người tốt nghiệp"
                     >
 
@@ -84,95 +88,39 @@
                     <span class="eyebrow">Câu chuyện</span>
 
                     <h2 class="section-title">
-                        Một hành trình được viết bằng sự kiên trì
+                        Câu chuyện cổ tích: Lộc Bùi và con đường
                     </h2>
 
                     <p class="section-description">
-                        Từ những ngày đầu còn nhiều bỡ ngỡ, hành trình Giáo lý viên
-                        đã mang đến không chỉ kiến thức, mà còn là những người bạn,
-                        những bài học và những trải nghiệm không thể quên.
+                        Ngày xửa ngày xưa, có anh Lộc Bùi, đi trên con đường.
+                        Ảnh đang đi nhưng phải ghé vào ngã Đuốc hồng 1. Sau đó ảnh lại rẽ vào đường Đuốc hồng 2.
+                        Vui chơi, học tập dui dẻ xong ảnh lại rẽ vào con đường Horeb, ở con đường này ảnh hái được 1 ngôi sao.
+                        Ngôi sao này khiến anh phải chịu rất nhiều thị phi. Nhưng hãy nhớ rằng: Tất cả là tại Lộc Bùi, nếu không có ai đổ lỗi thì hãy đổ cho Lộc Bùi.
+Thời gian dài sau, anh lại tiếp tục chạy vào con đường Tabor, sẵn sàng hái thêm 1 ngôi sao bỏ túi cho mình nữa. Ở con đường này, ảnh lại thấy biển báo Đuốc hồng 3 – đây cũng là điểm đích của đường Đuốc hồng. 
+Câu chuyện đúc kết ở đây là: tốn thời gian đọc câu chuyện này.
+
                     </p>
 
                     <p class="section-description">
-                        Ngày hôm nay không đơn thuần là ngày hoàn thành một chương trình học.
-                        Đây là dấu mốc ghi nhận sự trưởng thành, lòng nhiệt thành
-                        và một trái tim luôn sẵn sàng phục vụ.
+                        Thời gian dài sau, anh lại tiếp tục chạy vào con đường Tabor, sẵn sàng hái thêm 1 ngôi sao bỏ túi cho mình nữa. 
+                        Ở con đường này, ảnh lại thấy biển báo Đuốc hồng 3 – đây cũng là điểm đích của đường Đuốc hồng.
+                        Câu chuyện đúc kết ở đây là: tốn thời gian đọc câu chuyện này.
                     </p>
 
                     <blockquote>
-                        “Hãy để trẻ em đến với Thầy, đừng ngăn cấm chúng.”
+                        “Cam on vi da den”
                         <br>
-                        — Mc 10,14
+                        — Lb 3,1
                     </blockquote>
                 </div>
             </div>
         </section>
-
-        <section class="section" id = "timeline">
-            <div class="container">
-                <div class="section-heading">
-                    <span class="eyebrow">Dòng thời gian</span>
-
-                    <h2 class="section-title">
-                        Những dấu mốc đáng nhớ
-                    </h2>
-
-                    <p class="section-description">
-                        Mỗi năm là một chương nhỏ, mỗi kỷ niệm là một phần
-                        làm nên hành trình ý nghĩa này.
-                    </p>
-                </div>
-
-                <div class="timeline">
-                    <div class="timeline-item">
-                        <article class="timeline-card">
-                            <h3>Khởi đầu hành trình</h3>
-                            <p>
-                                Những buổi học đầu tiên, những người bạn đầu tiên
-                                và những trải nghiệm đầu tiên trên con đường trở thành Giáo lý viên.
-                            </p>
-                        </article>
-
-                        <div class="timeline-year">2023</div>
-                    </div>
-
-                    <div class="timeline-item">
-                        <article class="timeline-card">
-                            <h3>Trưởng thành qua phục vụ</h3>
-                            <p>
-                                Tham gia sinh hoạt, đồng hành cùng thiếu nhi
-                                và dần hiểu hơn ý nghĩa của sự kiên nhẫn và trách nhiệm.
-                            </p>
-                        </article>
-
-                        <div class="timeline-year">2024</div>
-                    </div>
-
-                    <div class="timeline-item">
-                        <article class="timeline-card">
-                            <h3>Những kỷ niệm đẹp</h3>
-                            <p>
-                                Những chuyến đi, những hoạt động tập thể
-                                và những khoảnh khắc bên những người đồng hành thân thương.
-                            </p>
-                        </article>
-
-                        <div class="timeline-year">2025</div>
-                    </div>
-
-                    <div class="timeline-item">
-                        <article class="timeline-card">
-                            <h3>Ngày tốt nghiệp</h3>
-                            <p>
-                                Hoàn thành chương trình Giáo Lý Viên Cấp III
-                                và bắt đầu một chặng đường phục vụ mới.
-                            </p>
-                        </article>
-
-                        <div class="timeline-year">2026</div>
-                    </div>
-                </div>
-            </div>
+        <section id="timeline" class="timeline-photo-section">
+            <img
+                class="timeline-photo"
+                src="{{ asset('assets/image/LocBuiBanner.jpg') }}"
+                alt="Những hình ảnh đáng nhớ trong hành trình phục vụ"
+            >
         </section>
 
         <section class="section" id = "gallery">
@@ -181,55 +129,86 @@
                     <span class="eyebrow">Album</span>
 
                     <h2 class="section-title">
-                        Những khoảnh khắc còn mãi
+                        Photobooth cùng anh Lộc nhé
                     </h2>
 
                     <p class="section-description">
-                        Một vài mảnh ghép của hành trình đã qua,
-                        được lưu lại để mỗi lần nhìn lại vẫn còn nguyên cảm xúc.
+                        Những khoảnh khắc đáng nhớ trong hành trình phục vụ của anh Lộc Bùi.
+                        Từ những ngày đầu tiên đến những kỷ niệm cuối cùng, mỗi bức ảnh là một câu chuyện,
+                        một kỷ niệm và một phần của hành trình đầy ý nghĩa này.
                     </p>
                 </div>
 
                 <div class="gallery-grid">
                     <div class="gallery-item">
                         <img
-                            src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&w=1200&q=85"
+                            src="{{ asset('assets/image/ptb1.jpg') }}"
                             alt="Kỷ niệm 1"
                         >
                     </div>
 
                     <div class="gallery-item">
                         <img
-                            src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=900&q=85"
+                            src="{{ asset('assets/image/ptb2.jpg') }}"
                             alt="Kỷ niệm 2"
                         >
                     </div>
 
                     <div class="gallery-item">
                         <img
-                            src="https://images.unsplash.com/photo-1529390079861-591de354faf5?auto=format&fit=crop&w=900&q=85"
+                            src="{{ asset('assets/image/ptb3.jpg') }}"
                             alt="Kỷ niệm 3"
                         >
                     </div>
 
                     <div class="gallery-item">
                         <img
-                            src="https://images.unsplash.com/photo-1520857014576-2c4f4c972b57?auto=format&fit=crop&w=800&q=85"
+                            src="{{ asset('assets/image/ptb4.jpg') }}"
                             alt="Kỷ niệm 4"
                         >
                     </div>
 
                     <div class="gallery-item">
                         <img
-                            src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=800&q=85"
+                            src="{{ asset('assets/image/ptb5.jpg') }}"
                             alt="Kỷ niệm 5"
                         >
                     </div>
 
                     <div class="gallery-item">
                         <img
-                            src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=800&q=85"
+                            src="{{ asset('assets/image/ptb6.jpg') }}"
                             alt="Kỷ niệm 6"
+                        >
+                    </div>
+                    <div class="gallery-item">
+                        <img
+                            src="{{ asset('assets/image/ptb7.jpg') }}"
+                            alt="Kỷ niệm 7"
+                        >
+                    </div>
+                    <div class="gallery-item">
+                        <img
+                            src="{{ asset('assets/image/ptb8.jpg') }}"
+                            alt="Kỷ niệm 8"
+                        >
+                    </div>
+                    <div class="gallery-item">
+                        <img
+                            src="{{ asset('assets/image/ptb9.jpg') }}"
+                            alt="Kỷ niệm 9"
+                        >
+                    </div>
+                    <div class="gallery-item">
+                        <img
+                            src="{{ asset('assets/image/ptb10.jpg') }}"
+                            alt="Kỷ niệm 10"
+                        >
+                    </div>
+                    <div class="gallery-item">
+                        <img
+                            src="{{ asset('assets/image/ptb11.jpg') }}"
+                            alt="Kỷ niệm 11"
                         >
                     </div>
                 </div>
@@ -239,30 +218,27 @@
         <section class="section letter-section" id = "letter">
             <div class="container">
                 <article class="letter-card">
-                    <span class="eyebrow">Lời gửi gắm</span>
+                    <span class="eyebrow">Đôi lời chúc mừng</span>
 
-                    <h2>Gửi bạn trong ngày đặc biệt này</h2>
+                    <h2>Gửi anh Lộc Bùi</h2>
 
                     <p>
-                        Ngày hôm nay đánh dấu việc bạn đã hoàn thành chương trình
-                        Giáo Lý Viên Cấp III. Nhưng đây không phải là điểm kết thúc,
-                        mà là khởi đầu cho một hành trình mới.
+                        Có những hành trình rồi sẽ đến ngày khép lại, nhưng những gì được vun đắp bằng đức tin và tinh thần phục vụ thì sẽ còn ở lại mãi.
+                        Hôm nay, tụi em xin chúc mừng anh Lộc Bùi đã tốt nghiệp Đuốc Hồng.
                     </p>
 
                     <p>
-                        Mong rằng những kiến thức, những trải nghiệm và tình yêu
-                        bạn đã nhận được trong suốt thời gian qua sẽ tiếp tục đồng hành cùng bạn.
+                        Đằng sau tấm bằng này không chỉ là ba năm gắn bó, mà còn là ngày tháng phục vụ, những hy sinh không cần được nhắc tên.
+                        Thanh xuân phải có Đuốc Hồng – Không có Đuốc Hồng hết bà thanh xuân. Là nơi tuổi trẻ được sống cho Chúa, được học cách yêu thương, phục vụ và lớn lên trong đức tin.
                     </p>
 
                     <p>
-                        Chúc bạn luôn giữ được ngọn lửa nhiệt thành,
-                        sự kiên nhẫn và một trái tim biết yêu thương,
-                        để tiếp tục gieo những hạt giống tốt đẹp
-                        đến những người bạn gặp trên hành trình phục vụ.
+                        Hôm nay anh tốt nghiệp, nhưng tình yêu dành cho Chúa mãi mãi ở trong anh. Ngọn lửa ấy sẽ tiếp tục được anh mang theo và lan tỏa ở bất cứ nơi đâu Chúa gọi mời.
+                        Nguyện xin Thiên Chúa luôn đồng hành, gìn giữ và ban nhiều ơn lành trên hành trình phục vụ của anh. Mong rằng, ở bất cứ cương vị nào, anh vẫn luôn là người biết sống yêu thương, phục vụ và trở nên chứng nhân cho Tin Mừng bằng chính đời sống của mình.
                     </p>
 
                     <div class="letter-signature">
-                        Với tất cả sự trân trọng
+                        Chúc mừng anh Lộc Bùi!
                     </div>
                 </article>
             </div>
