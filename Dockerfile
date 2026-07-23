@@ -6,7 +6,8 @@ RUN apt-get update && apt-get install -y \
     libpq-dev \
     libzip-dev \
     && docker-php-ext-install pdo_pgsql pgsql zip \
-    && a2enmod rewrite
+    && a2enmod rewrite \
+    && rm -rf /var/lib/apt/lists/*
 
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
@@ -31,4 +32,4 @@ RUN printf '<Directory /var/www/html/public>\n\
 </Directory>\n' \
     >> /etc/apache2/apache2.conf
 
-CMD ["sh", "-c", "php artisan config:clear && php artisan migrate --force && exec apache2-foreground"]
+CMD ["sh", "-c", "php artisan config:clear && php artisan migrate --force && (php artisan storage:link || true) && exec apache2-foreground"]

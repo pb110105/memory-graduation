@@ -32,8 +32,8 @@ class MemoryPostController extends Controller
         }
 
         MemoryPost::create([
-            'sender_name' => $validated['sender_name'],
-            'message' => $validated['message'],
+            'sender_name' => $request->sender_name,
+            'message' => $request->message,
             'image_path' => $imagePath,
         ]);
 
