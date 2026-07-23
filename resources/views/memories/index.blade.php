@@ -31,27 +31,27 @@
     </header>
 
     <main class="page-shell">
-        @if (!request()->boolean('write'))
-            <section class="community-hero">
-                <div class="container community-hero-inner">
-                    <div>
-                        <span class="eyebrow">Không gian kỷ niệm</span>
+           @if (!request()->boolean('write'))
+        <section class="community-hero">
+            <div class="container community-hero-inner">
+                <div>
+                    <span class="eyebrow">Không gian kỷ niệm</span>
 
-                        <h1>Những lời gửi gắm</h1>
+                    <h1>Những lời gửi gắm</h1>
 
-                        <p>
-                            Nơi mọi người cùng chia sẻ lời chúc, hình ảnh
-                            và những khoảnh khắc đáng nhớ trong ngày đặc biệt này.
-                        </p>
-                    </div>
-
-                    <div class="hero-stat">
-                        <strong>26.07.2026</strong>
-                        <span>Một ngày để nhớ</span>
-                    </div>
+                    <p>
+                        Nơi mọi người cùng chia sẻ lời chúc, hình ảnh
+                        và những khoảnh khắc đáng nhớ trong ngày đặc biệt này.
+                    </p>
                 </div>
-            </section>
-        @endif
+
+                <div class="hero-stat">
+                    <strong>26.07.2026</strong>
+                    <span>Một ngày để nhớ</span>
+                </div>
+            </div>
+        </section>
+    @endif
 
 
         <section class="feed-section">
