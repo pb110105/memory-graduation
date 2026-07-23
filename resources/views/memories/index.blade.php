@@ -31,46 +31,49 @@
     </header>
 
     <main class="page-shell">
-        <section class="community-hero">
-            <div class="container community-hero-inner">
-                <div>
-                    <span class="eyebrow">Không gian kỷ niệm</span>
+        @if (!request()->boolean('write'))
+            <section class="community-hero">
+                <div class="container community-hero-inner">
+                    <div>
+                        <span class="eyebrow">Không gian kỷ niệm</span>
 
-                    <h1>Những lời gửi gắm</h1>
+                        <h1>Những lời gửi gắm</h1>
 
-                    <p>
-                        Nơi mọi người cùng chia sẻ lời chúc, hình ảnh
-                        và những khoảnh khắc đáng nhớ trong ngày đặc biệt này.
-                    </p>
+                        <p>
+                            Nơi mọi người cùng chia sẻ lời chúc, hình ảnh
+                            và những khoảnh khắc đáng nhớ trong ngày đặc biệt này.
+                        </p>
+                    </div>
+
+                    <div class="hero-stat">
+                        <strong>26.07.2026</strong>
+                        <span>Một ngày để nhớ</span>
+                    </div>
                 </div>
+            </section>
+        @endif
 
-                <div class="hero-stat">
-                    <strong>26.07.2026</strong>
-                    <span>Một ngày để nhớ</span>
-                </div>
-            </div>
-        </section>
 
         <section class="feed-section">
-            <div class="container feed-layout">
-                <aside class="sidebar">
-                    <div class="profile-card">
-                        <img
-                            src="{{ asset('assets/image/portrait.jpg') }}"
-                            alt="Người tốt nghiệp"
-                        >
+            <div class="container feed-layout {{ request()->boolean('write') ? 'form-only-layout' : '' }}">
+                @if (!request()->boolean('write'))
+                    <aside class="sidebar">
+                        <div class="profile-card">
+                            <img
+                                src="{{ asset('assets/image/portrait.jpg') }}"
+                                alt="Người tốt nghiệp"
+                            >
 
-                        <h2>Đaminh Bùi Đức Lộc</h2>
+                            <h2>Đaminh Bùi Đức Lộc</h2>
 
-                        <p>Giáo Lý Viên Cấp III</p>
-                    </div>
+                            <p>Giáo Lý Viên Cấp III</p>
+                        </div>
 
-                    <div class="event-card">
-                        <span>Ngày tốt nghiệp</span>
-                        <strong>26 tháng 07 năm 2026</strong>
-                    </div>
+                        <div class="event-card">
+                            <span>Ngày tốt nghiệp</span>
+                            <strong>26 tháng 07 năm 2026</strong>
+                        </div>
 
-                    @if (!request()->boolean('write'))
                         <div class="qr-card">
                             <span class="qr-eyebrow">
                                 Không gian lời chúc
@@ -79,22 +82,22 @@
                             <div class="qr-frame">
                                 <img
                                     src="{{ asset('assets/image/qr.png') }}"
-                                    alt="Mã QR gửi lời chúc đến anh Lộc"
+                                    alt="Mã QR mở form gửi lời chúc"
                                 >
                             </div>
 
                             <h3>Quét để gửi lời chúc</h3>
 
                             <p>
-                                Quét mã QR để gửi lời chúc và hình ảnh kỷ niệm đến anh Lộc.
+                                Sau khi quét, form gửi ảnh và lời chúc sẽ được mở trực tiếp.
                             </p>
 
                             <a
                                 href="{{ route('memories.index', ['write' => 1]) }}"
                                 class="qr-action"
                             >
-                                <span>Gửi lời chúc ngay</span>
-                                <span class="qr-action-arrow" aria-hidden="true">→</span>
+                                <span>Mở form gửi lời chúc</span>
+                                <span class="qr-action-arrow">→</span>
                             </a>
 
                             <a
@@ -102,12 +105,12 @@
                                 download="QR-gui-loi-chuc-anh-Loc.png"
                                 class="qr-download"
                             >
-                                <span aria-hidden="true">↓</span>
+                                <span>↓</span>
                                 <span>Tải mã QR</span>
                             </a>
                         </div>
-                    @endif
-                </aside>
+                    </aside>
+                @endif
 
                 <section class="feed">
                     @if (session('success'))

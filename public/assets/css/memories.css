@@ -178,6 +178,9 @@ textarea {
     align-items: start;
     justify-content: center;
 }
+.feed-layout.form-only-layout {
+    grid-template-columns: minmax(0, 720px);
+}
 
 .sidebar {
     position: sticky;
@@ -637,8 +640,22 @@ html {
         grid-template-columns: 1fr;
     }
 
-    .profile-card,
-    .event-card,
+    .event-card {
+        display: none;
+    }
+
+    .profile-card {
+        padding: 20px;
+    }
+
+    .profile-card img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .profile-card h2 {
+        font-size: 23px;
+    }
     .qr-card {
         display: none;
     }
@@ -682,4 +699,104 @@ html {
     background: rgba(255, 255, 255, 0.65);
     color: var(--muted);
     text-align: center;
+}
+.qr-card {
+    padding: 24px;
+    border: 1px solid rgba(111, 29, 44, 0.14);
+    border-radius: 24px;
+    background: #fffdf9;
+    text-align: center;
+    box-shadow: 0 18px 45px rgba(74, 12, 25, 0.1);
+}
+
+.qr-eyebrow {
+    display: block;
+    margin-bottom: 14px;
+    color: #c9a45c;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.qr-frame {
+    width: 210px;
+    max-width: 100%;
+    aspect-ratio: 1;
+    margin: 0 auto 18px;
+    padding: 10px;
+
+    border: 2px solid rgba(201, 164, 92, 0.7);
+    border-radius: 22px;
+    background: white;
+}
+
+.qr-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.qr-card h3 {
+    color: #4a0c19;
+    font-family: "Playfair Display", serif;
+    font-size: 22px;
+}
+
+.qr-card p {
+    margin-top: 9px;
+    color: #78686a;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.qr-action,
+.qr-download {
+    min-height: 48px;
+    margin-top: 14px;
+    padding: 7px 9px 7px 18px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.qr-action {
+    background: linear-gradient(
+        135deg,
+        #f1dfaa,
+        #c9a45c
+    );
+
+    color: #4a0c19;
+}
+
+.qr-action-arrow {
+    width: 36px;
+    height: 36px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 50%;
+    background: #6f1d2c;
+    color: #f4dda2;
+    font-size: 19px;
+}
+
+.qr-download {
+    justify-content: center;
+    border: 1px solid rgba(111, 29, 44, 0.22);
+    background: #fff8f2;
+    color: #6f1d2c;
+}
+
+.qr-download:hover {
+    background: #6f1d2c;
+    color: #fff8f2;
 }
