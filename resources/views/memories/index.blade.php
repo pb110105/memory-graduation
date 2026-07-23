@@ -56,7 +56,7 @@
                 <aside class="sidebar">
                     <div class="profile-card">
                         <img
-                            src="{{ asset('assets/images/portrait.jpg') }}"
+                            src="{{ asset('assets/image/portrait.jpg') }}"
                             alt="Người tốt nghiệp"
                         >
 
@@ -69,6 +69,44 @@
                         <span>Ngày tốt nghiệp</span>
                         <strong>26 tháng 07 năm 2026</strong>
                     </div>
+
+                    @if (!request()->boolean('write'))
+                        <div class="qr-card">
+                            <span class="qr-eyebrow">
+                                Không gian lời chúc
+                            </span>
+
+                            <div class="qr-frame">
+                                <img
+                                    src="{{ asset('assets/image/qr.png') }}"
+                                    alt="Mã QR gửi lời chúc đến anh Lộc"
+                                >
+                            </div>
+
+                            <h3>Quét để gửi lời chúc</h3>
+
+                            <p>
+                                Quét mã QR để gửi lời chúc và hình ảnh kỷ niệm đến anh Lộc.
+                            </p>
+
+                            <a
+                                href="{{ route('memories.index', ['write' => 1]) }}"
+                                class="qr-action"
+                            >
+                                <span>Gửi lời chúc ngay</span>
+                                <span class="qr-action-arrow" aria-hidden="true">→</span>
+                            </a>
+
+                            <a
+                                href="{{ asset('assets/images/memories-qr.png') }}"
+                                download="QR-gui-loi-chuc-anh-Loc.png"
+                                class="qr-download"
+                            >
+                                <span aria-hidden="true">↓</span>
+                                <span>Tải mã QR</span>
+                            </a>
+                        </div>
+                    @endif
                 </aside>
 
                 <section class="feed">
@@ -90,116 +128,127 @@
                         </div>
                     @endif
 
-                    <article class="composer-card">
-                        <div class="composer-header">
-                            <div class="avatar">B</div>
-
-                            <div>
-                                <h2>Chia sẻ một kỷ niệm</h2>
-
-                                <p>
-                                    Viết lời chúc hoặc đăng một khoảnh khắc đáng nhớ.
-                                </p>
-                            </div>
-                        </div>
-
-                        <form
-                            action="{{ route('memories.store') }}"
-                            method="POST"
-                            enctype="multipart/form-data"
-                        >
-                            @csrf
-
-                            <div class="form-group">
-                                <label for="sender_name">Tên của bạn</label>
-
-                                <input
-                                    type="text"
-                                    id="sender_name"
-                                    name="sender_name"
-                                    value="{{ old('sender_name') }}"
-                                    placeholder="Nhập tên của bạn"
-                                    required
-                                >
-                            </div>
-
-                            <div class="form-group">
-                                <label for="message">Lời gửi gắm</label>
-
-                                <textarea
-                                    id="message"
-                                    name="message"
-                                    rows="5"
-                                    placeholder="Bạn muốn nhắn điều gì?"
-                                    required
-                                >{{ old('message') }}</textarea>
-                            </div>
-
-                            <div class="upload-box">
-                                <input
-                                    type="file"
-                                    id="image"
-                                    name="image"
-                                    accept="image/*"
-                                >
-
-                                <label for="image">
-                                    <span class="upload-icon">＋</span>
-                                    <strong>Chọn hoặc chụp ảnh</strong>
-                                    <small>JPG, PNG hoặc WEBP</small>
-                                </label>
-                            </div>
-
-                            <button type="submit" class="submit-button">
-                                Đăng kỷ niệm
-                            </button>
-                        </form>
-                    </article>
-
-                    @forelse ($posts as $post)
-                        <article class="post-card">
-                            <div class="post-header">
-                                <div class="avatar">
-                                    {{ mb_strtoupper(mb_substr($post->sender_name, 0, 1)) }}
-                                </div>
+                    @if (request()->boolean('write'))
+                        <article class="composer-card" id="memory-form">
+                            <div class="composer-header">
+                                <div class="avatar">B</div>
 
                                 <div>
-                                    <h3>{{ $post->sender_name }}</h3>
+                                    <h2>Gửi lời chúc đến anh Lộc</h2>
 
-                                    <span>
-                                        {{ $post->created_at->diffForHumans() }}
-                                    </span>
+                                    <p>
+                                        Viết lời chúc và gửi một hình ảnh kỷ niệm.
+                                    </p>
                                 </div>
                             </div>
 
-                            <p class="post-message">
-                                {{ $post->message }}
-                            </p>
+                            <form
+                                action="{{ route('memories.store') }}"
+                                method="POST"
+                                enctype="multipart/form-data"
+                            >
+                                @csrf
 
-                            @if ($post->image_path)
-                                <img
-                                    class="post-image"
-                                    src="{{ asset('storage/' . $post->image_path) }}"
-                                    alt="Ảnh kỷ niệm của {{ $post->sender_name }}"
-                                >
-                            @endif
+                                <div class="form-group">
+                                    <label for="sender_name">Tên của bạn</label>
 
-                            <div class="post-footer">
-                                <button type="button">
-                                    ♡ Thả tim
+                                    <input
+                                        type="text"
+                                        id="sender_name"
+                                        name="sender_name"
+                                        value="{{ old('sender_name') }}"
+                                        placeholder="Nhập tên của bạn"
+                                        required
+                                    >
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="message">Lời gửi gắm</label>
+
+                                    <textarea
+                                        id="message"
+                                        name="message"
+                                        rows="5"
+                                        placeholder="Bạn muốn nhắn điều gì?"
+                                        required
+                                    >{{ old('message') }}</textarea>
+                                </div>
+
+                                <div class="upload-box">
+                                    <input
+                                        type="file"
+                                        id="image"
+                                        name="image"
+                                        accept="image/*"
+                                    >
+
+                                    <label for="image">
+                                        <span class="upload-icon">＋</span>
+                                        <strong>Chọn hoặc chụp ảnh</strong>
+                                        <small>JPG, PNG hoặc WEBP</small>
+                                    </label>
+                                </div>
+
+                                <button type="submit" class="submit-button">
+                                    Gửi lời chúc
                                 </button>
+                            </form>
 
-                                <span>
-                                    {{ $post->likes_count }} lượt yêu thích
-                                </span>
-                            </div>
+                            <a
+                                href="{{ route('memories.index') }}"
+                                class="cancel-write-link"
+                            >
+                                ← Quay lại xem lời gửi gắm
+                            </a>
                         </article>
-                    @empty
-                        <div class="empty-feed">
-                            Chưa có lời gửi gắm nào.
-                            Hãy là người đầu tiên chia sẻ một kỷ niệm.
-                        </div>
-                    @endforelse
+                    @endif
+
+                    @if (!request()->boolean('write'))
+                        @forelse ($posts as $post)
+                            <article class="post-card">
+                                <div class="post-header">
+                                    <div class="avatar">
+                                        {{ mb_strtoupper(mb_substr($post->sender_name, 0, 1)) }}
+                                    </div>
+
+                                    <div>
+                                        <h3>{{ $post->sender_name }}</h3>
+
+                                        <span>
+                                            {{ $post->created_at->diffForHumans() }}
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <p class="post-message">
+                                    {{ $post->message }}
+                                </p>
+
+                                @if ($post->image_path)
+                                    <img
+                                        class="post-image"
+                                        src="{{ asset('storage/' . $post->image_path) }}"
+                                        alt="Ảnh kỷ niệm của {{ $post->sender_name }}"
+                                    >
+                                @endif
+
+                                <div class="post-footer">
+                                    <button type="button">
+                                        ♡ Thả tim
+                                    </button>
+
+                                    <span>
+                                        {{ $post->likes_count }} lượt yêu thích
+                                    </span>
+                                </div>
+                            </article>
+                        @empty
+                            <div class="empty-feed">
+                                Chưa có lời gửi gắm nào.
+                                Hãy là người đầu tiên chia sẻ một kỷ niệm.
+                            </div>
+                        @endforelse
+                    @endif
                 </section>
             </div>
         </section>

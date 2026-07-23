@@ -96,13 +96,11 @@
                         Ảnh đang đi nhưng phải ghé vào ngã Đuốc hồng 1. Sau đó ảnh lại rẽ vào đường Đuốc hồng 2.
                         Vui chơi, học tập dui dẻ xong ảnh lại rẽ vào con đường Horeb, ở con đường này ảnh hái được 1 ngôi sao.
                         Ngôi sao này khiến anh phải chịu rất nhiều thị phi. Nhưng hãy nhớ rằng: Tất cả là tại Lộc Bùi, nếu không có ai đổ lỗi thì hãy đổ cho Lộc Bùi.
-Thời gian dài sau, anh lại tiếp tục chạy vào con đường Tabor, sẵn sàng hái thêm 1 ngôi sao bỏ túi cho mình nữa. Ở con đường này, ảnh lại thấy biển báo Đuốc hồng 3 – đây cũng là điểm đích của đường Đuốc hồng. 
-Câu chuyện đúc kết ở đây là: tốn thời gian đọc câu chuyện này.
 
                     </p>
 
                     <p class="section-description">
-                        Thời gian dài sau, anh lại tiếp tục chạy vào con đường Tabor, sẵn sàng hái thêm 1 ngôi sao bỏ túi cho mình nữa. 
+                        Thời gian dài sau, anh lại tiếp tục chạy vào con đường Tabor, sẵn sàng hái thêm 1 ngôi sao bỏ túi cho mình nữa.
                         Ở con đường này, ảnh lại thấy biển báo Đuốc hồng 3 – đây cũng là điểm đích của đường Đuốc hồng.
                         Câu chuyện đúc kết ở đây là: tốn thời gian đọc câu chuyện này.
                     </p>
@@ -160,7 +158,22 @@ Câu chuyện đúc kết ở đây là: tốn thời gian đọc câu chuyện 
                             alt="Kỷ niệm 3"
                         >
                     </div>
-
+                    <div class="gallery-item gallery-video-item">
+                        <video
+                            class="gallery-video"
+                            autoplay
+                            muted
+                            loop
+                            playsinline
+                            preload="metadata"
+                            poster="{{ asset('assets/image/album-video-cover.jpg') }}"
+                        >
+                            <source
+                                src="{{ asset('assets/video/video1.mp4') }}"
+                                type="video/mp4"
+                            >
+                        </video>
+                    </div>
                     <div class="gallery-item">
                         <img
                             src="{{ asset('assets/image/ptb4.jpg') }}"
@@ -193,6 +206,22 @@ Câu chuyện đúc kết ở đây là: tốn thời gian đọc câu chuyện 
                             alt="Kỷ niệm 8"
                         >
                     </div>
+                    <div class="gallery-item gallery-video-item">
+                        <video
+                            class="gallery-video"
+                            autoplay
+                            muted
+                            loop
+                            playsinline
+                            preload="metadata"
+                            poster="{{ asset('assets/image/album-video-cover.jpg') }}"
+                        >
+                            <source
+                                src="{{ asset('assets/video/video2.mp4') }}"
+                                type="video/mp4"
+                            >
+                        </video>
+                    </div>
                     <div class="gallery-item">
                         <img
                             src="{{ asset('assets/image/ptb9.jpg') }}"
@@ -211,6 +240,104 @@ Câu chuyện đúc kết ở đây là: tốn thời gian đọc câu chuyện 
                             alt="Kỷ niệm 11"
                         >
                     </div>
+                    <div class="gallery-item">
+                        <img
+                            src="{{ asset('assets/image/ptb12.jpg') }}"
+                            alt="Kỷ niệm 12"
+                        >
+                    </div>
+                    <div class="gallery-item">
+                        <img
+                            src="{{ asset('assets/image/ptb13.jpg') }}"
+                            alt="Kỷ niệm 13"
+                        >
+                    </div>
+                    <div class="gallery-item">
+                        <img
+                            src="{{ asset('assets/image/ptb14.jpg') }}"
+                            alt="Kỷ niệm 14"
+                        >
+                    </div>
+                    <div class="gallery-item">
+                        <img
+                            src="{{ asset('assets/image/ptb15.jpg') }}"
+                            alt="Kỷ niệm 15"
+                        >
+                    </div>
+                    <div class="gallery-item">
+                        <img
+                            src="{{ asset('assets/image/ptb16.jpg') }}"
+                            alt="Kỷ niệm 16"
+                        >
+                    </div>
+                    <div class="gallery-item">
+                        <img
+                            src="{{ asset('assets/image/ptb17.jpg') }}"
+                            alt="Kỷ niệm 17"
+                        >
+                    </div>
+                    <div class="gallery-item">
+                        <img
+                            src="{{ asset('assets/image/ptb18.jpg') }}"
+                            alt="Kỷ niệm 18"
+                        >
+                    </div>
+                    <div class="gallery-item">
+                        <img
+                            src="{{ asset('assets/image/ptb19.jpg') }}"
+                            alt="Kỷ niệm 19"
+                        >
+                    </div>
+                    <div class="gallery-item">
+                        <img
+                            src="{{ asset('assets/image/ptb20.jpg') }}"
+                            alt="Kỷ niệm 20"
+                        >
+                    </div>
+                    <div class="gallery-item">
+                        <img
+                            src="{{ asset('assets/image/ptb21.jpg') }}"
+                            alt="Kỷ niệm 21"
+                        >
+                    </div>
+                    <div class="gallery-item">
+                        <img
+                            src="{{ asset('assets/image/ptb22.jpg') }}"
+                            alt="Kỷ niệm 22"
+                        >
+                    </div>
+                    <div class="gallery-item">
+                        <img
+                            src="{{ asset('assets/image/ptb23.jpg') }}"
+                            alt="Kỷ niệm 23"
+                        >
+                    </div>
+                    <div class="gallery-item">
+                        <img
+                            src="{{ asset('assets/image/ptb24.jpg') }}"
+                            alt="Kỷ niệm 24"
+                        >
+                    </div>
+                    <div class="gallery-item">
+                        <img
+                            src="{{ asset('assets/image/ptb25.jpg') }}"
+                            alt="Kỷ niệm 25"
+                        >
+                    </div>
+                    <div class="gallery-item">
+                        <img
+                            src="{{ asset('assets/image/ptb26.jpg') }}"
+                            alt="Kỷ niệm 26"
+                        >
+                    </div>
+                    <div class="gallery-item">
+                        <img
+                            src="{{ asset('assets/image/ptb27.jpg') }}"
+                            alt="Kỷ niệm 27"
+                        >
+                    </div>
+
+
                 </div>
             </div>
         </section>
@@ -243,7 +370,11 @@ Câu chuyện đúc kết ở đây là: tốn thời gian đọc câu chuyện 
                 </article>
             </div>
             <a href="{{ route('memories.index') }}" class="memory-button">
-                Xem những lời gửi gắm
+            <span>Lời gửi gắm đến anh Lộc</span>
+
+            <span class="memory-button-arrow">
+                →
+            </span>
             </a>
         </section>
     </main>

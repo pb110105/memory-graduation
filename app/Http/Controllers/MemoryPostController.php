@@ -39,6 +39,6 @@ class MemoryPostController extends Controller
 
         return redirect()
             ->route('memories.index')
-            ->with('success', 'Kỷ niệm của bạn đã được đăng.');
+            ->with('success', 'Lời chúc của bạn đã được gửi thành công!');
     }
 }
