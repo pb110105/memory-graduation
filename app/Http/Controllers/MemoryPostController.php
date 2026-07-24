@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\MemoryPost;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Illuminate\View\View;
 
 class MemoryPostController extends Controller
@@ -21,19 +22,33 @@ class MemoryPostController extends Controller
         $validated = $request->validate([
             'sender_name' => ['required', 'string', 'max:100'],
             'message' => ['required', 'string', 'max:1000'],
-            'image' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp', 'max:5120'],
+            'image' => [
+                'nullable',
+                'image',
+                'mimes:jpg,jpeg,png,webp',
+                'max:15360',
+            ],
         ]);
 
         $imagePath = null;
 
         if ($request->hasFile('image')) {
-            $imagePath = $request->file('image')
-                ->store('memory-posts', 'public');
+            $file = $request->file('image');
+
+            Log::info('Memory image upload', [
+                'original_name' => $file->getClientOriginalName(),
+                'mime_type' => $file->getMimeType(),
+                'extension' => $file->getClientOriginalExtension(),
+                'size_mb' => round($file->getSize() / 1024 / 1024, 2),
+                'is_valid' => $file->isValid(),
+            ]);
+
+            $imagePath = $file->store('memory-posts', 'public');
         }
 
         MemoryPost::create([
-            'sender_name' => $request->sender_name,
-            'message' => $request->message,
+            'sender_name' => $validated['sender_name'],
+            'message' => $validated['message'],
             'image_path' => $imagePath,
         ]);
 

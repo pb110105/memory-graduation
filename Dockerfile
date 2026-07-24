@@ -31,5 +31,11 @@ RUN printf '<Directory /var/www/html/public>\n\
     Require all granted\n\
 </Directory>\n' \
     >> /etc/apache2/apache2.conf
-
+RUN printf "file_uploads=On\n\
+upload_max_filesize=15M\n\
+post_max_size=20M\n\
+memory_limit=256M\n\
+max_execution_time=120\n\
+max_input_time=120\n" \
+> /usr/local/etc/php/conf.d/uploads.ini
 CMD ["sh", "-c", "php artisan config:clear && php artisan migrate --force && rm -rf public/storage && php artisan storage:link && chown -R www-data:www-data storage bootstrap/cache && exec apache2-foreground"]
