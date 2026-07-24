@@ -101,7 +101,7 @@
                             </a>
 
                             <a
-                                href="{{ asset('assets/images/memories-qr.png') }}"
+                                href="{{ asset('assets/images/qr.png') }}"
                                 download="QR-gui-loi-chuc-anh-Loc.png"
                                 class="qr-download"
                             >
@@ -207,7 +207,7 @@
 
                                         <img
                                             id="editor-frame"
-                                            src="{{ asset('assets/frames/memory-frame.png') }}"
+                                            src="{{ asset('assets/frames/frame1.png') }}"
                                             alt=""
                                             draggable="false"
                                         >
@@ -241,15 +241,6 @@
                                         <img src="{{ asset('assets/frames/frame1.png') }}" alt="Frame 1">
                                     </label>
 
-                                    <label class="frame-option">
-                                        <input type="radio" name="frame_choice" value="frame2">
-                                        <img src="{{ asset('assets/frames/frame2.png') }}" alt="Frame 2">
-                                    </label>
-
-                                    <label class="frame-option">
-                                        <input type="radio" name="frame_choice" value="frame3">
-                                        <img src="{{ asset('assets/frames/frame3.png') }}" alt="Frame 3">
-                                    </label>
                                 </div>
                                 <button type="submit" class="submit-button">
                                     Gửi lời chúc
