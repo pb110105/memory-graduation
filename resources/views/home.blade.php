@@ -264,6 +264,22 @@
                             alt="Kỷ niệm 15"
                         >
                     </div>
+                    <div class="gallery-item gallery-video-item">
+                        <video
+                            class="gallery-video"
+                            autoplay
+                            muted
+                            loop
+                            playsinline
+                            preload="metadata"
+                            poster="{{ asset('assets/image/album-video-cover.jpg') }}"
+                        >
+                            <source
+                                src="{{ asset('assets/video/video3.mp4') }}"
+                                type="video/mp4"
+                            >
+                        </video>
+                    </div>
                     <div class="gallery-item">
                         <img
                             src="{{ asset('assets/image/ptb16.jpg') }}"
@@ -281,6 +297,22 @@
                             src="{{ asset('assets/image/ptb18.jpg') }}"
                             alt="Kỷ niệm 18"
                         >
+                    </div>
+                    <div class="gallery-item gallery-video-item">
+                        <video
+                            class="gallery-video"
+                            autoplay
+                            muted
+                            loop
+                            playsinline
+                            preload="metadata"
+                            poster="{{ asset('assets/image/album-video-cover.jpg') }}"
+                        >
+                            <source
+                                src="{{ asset('assets/video/video4.mp4') }}"
+                                type="video/mp4"
+                            >
+                        </video>
                     </div>
                     <div class="gallery-item">
                         <img
@@ -318,6 +350,22 @@
                             alt="Kỷ niệm 24"
                         >
                     </div>
+                    <div class="gallery-item gallery-video-item">
+                        <video
+                            class="gallery-video"
+                            autoplay
+                            muted
+                            loop
+                            playsinline
+                            preload="metadata"
+                            poster="{{ asset('assets/image/album-video-cover.jpg') }}"
+                        >
+                            <source
+                                src="{{ asset('assets/video/video5.mp4') }}"
+                                type="video/mp4"
+                            >
+                        </video>
+                    </div>
                     <div class="gallery-item">
                         <img
                             src="{{ asset('assets/image/ptb25.jpg') }}"
@@ -336,8 +384,43 @@
                             alt="Kỷ niệm 27"
                         >
                     </div>
-
-
+                    <div class="gallery-item">
+                        <img
+                            src="{{ asset('assets/image/ptb28.jpg') }}"
+                            alt="Kỷ niệm 28"
+                        >
+                    </div>
+                    <div class="gallery-item">
+                        <img
+                            src="{{ asset('assets/image/ptb29.jpg') }}"
+                            alt="Kỷ niệm 29"
+                        >
+                    </div>
+                    <div class="gallery-item">
+                        <img
+                            src="{{ asset('assets/image/ptb30.jpg') }}"
+                            alt="Kỷ niệm 30"
+                        >
+                    </div>
+                    <div class="gallery-item">
+                        <img
+                            src="{{ asset('assets/image/ptb31.jpg') }}"
+                            alt="Kỷ niệm 31"
+                        >
+                    </div>
+                    <div class="gallery-item">
+                        <img
+                            src="{{ asset('assets/image/ptb32.jpg') }}"
+                            alt="Kỷ niệm 32"
+                        >
+                    </div>
+                    <div class="gallery-item">
+                        <img
+                            src="{{ asset('assets/image/ptb33.jpg') }}"
+                            alt="Kỷ niệm 33"
+                        >
+                    </div>
+                    
                 </div>
             </div>
         </section>
