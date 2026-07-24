@@ -14,10 +14,7 @@
         rel="stylesheet"
     >
 
-    <link
-        rel="stylesheet"
-        href="{{ asset('assets/css/memories.css') }}?v={{ filemtime(public_path('assets/css/memories.css')) }}"
-    >
+    <link rel="stylesheet" href="{{ asset('assets/css/memories.css') }}">
 </head>
 
 <body>
@@ -104,7 +101,7 @@
                             </a>
 
                             <a
-                                href="{{ asset('assets/image/qr.png') }}"
+                                href="{{ asset('assets/images/qr.png') }}"
                                 download="QR-gui-loi-chuc-anh-Loc.png"
                                 class="qr-download"
                             >
@@ -212,7 +209,7 @@
 
                                         <img
                                             id="editor-frame"
-                                            src="{{ asset('assets/frames/frame1.png') }}"
+                                            src="{{ asset('assets/frames/memory-frame-16x9.png') }}"
                                             alt=""
                                             draggable="false"
                                         >
@@ -232,6 +229,13 @@
                                     name="image"
                                     hidden
                                 >
+                                <div class="frame-picker">
+                                    <label class="frame-option">
+                                        <input type="radio" name="frame_choice" value="frame1" checked>
+                                        <img src="{{ asset('assets/frames/frame1.png') }}" alt="Frame 1">
+                                    </label>
+
+                                </div>
                                 <button type="submit" class="submit-button">
                                     Gửi lời chúc
                                 </button>
@@ -578,7 +582,7 @@ document.addEventListener('DOMContentLoaded', () => {
             context.imageSmoothingQuality = 'high';
 
             context.fillStyle = '#ffffff';
-            context.fillRect(0, 0, canvasWidth, canvasHeight);
+            context.fillRect(0, 0, outputSize, outputSize);
 
             const stageSize = getStageSize();
             const outputRatioX = canvasWidth / stageSize.width;
@@ -644,7 +648,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             alert(
                 'Không tải được frame. Kiểm tra file '
-                + 'public/assets/frames/frame1.png'
+                + 'public/assets/frames/memory-frame.png'
             );
 
             submitButton.disabled = false;
