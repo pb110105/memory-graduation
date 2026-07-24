@@ -32,4 +32,4 @@ RUN printf '<Directory /var/www/html/public>\n\
 </Directory>\n' \
     >> /etc/apache2/apache2.conf
 
-CMD ["sh", "-c", "php artisan config:clear && php artisan migrate --force && (php artisan storage:link || true) && exec apache2-foreground"]
+CMD ["sh", "-c", "php artisan config:clear && php artisan migrate --force && rm -rf public/storage && php artisan storage:link && chown -R www-data:www-data storage bootstrap/cache && exec apache2-foreground"]
