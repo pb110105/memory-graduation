@@ -370,6 +370,23 @@ html {
 #memory-form {
     scroll-margin-top: 100px;
 }
+.memory-editor-preview,
+.memory-frame-preview,
+.memory-upload-preview,
+.memory-post-image {
+    aspect-ratio: 9 / 16;
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: 24px;
+}
+
+.memory-post-image {
+    object-fit: cover;
+    display: block;
+    margin-top: 16px;
+}
 
 #memory-form:target {
     border-color: rgba(201, 164, 92, 0.8);
@@ -829,7 +846,7 @@ html {
 
     width: min(100%, 640px);
     height: auto !important;
-    aspect-ratio: 16 / 9 !important;
+    aspect-ratio: 9 / 16 !important;
 
     margin: 0 auto;
     overflow: hidden;
@@ -930,7 +947,7 @@ html {
     #editor-stage.editor-stage {
         width: 100%;
         height: auto !important;
-        aspect-ratio: 16 / 9 !important;
+        aspect-ratio: 9 / 16 !important;
         border-radius: 16px;
     }
 
