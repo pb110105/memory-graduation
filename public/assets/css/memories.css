@@ -811,16 +811,13 @@ html {
 .image-editor {
     margin-bottom: 20px;
     padding: 18px;
-
     border: 1px solid rgba(111, 29, 44, 0.14);
     border-radius: 20px;
-
     background: #fff8f3;
 }
 
 .editor-hint {
     margin-bottom: 14px;
-
     color: var(--muted);
     font-size: 13px;
     text-align: center;
@@ -828,45 +825,13 @@ html {
 
 .editor-stage {
     position: relative;
-
-    width: min(100%, 420px);
-    aspect-ratio: 1 / 1;
+    width: min(100%, 520px);
+    aspect-ratio: 16 / 9;   /* đổi từ 1/1 thành 16/9 */
     margin: 0 auto;
-
-    overflow: hidden;
-
     border: 2px solid rgba(201, 164, 92, 0.65);
-    border-radius: 20px;
-
-    background:
-        linear-gradient(
-            45deg,
-            #f4ece6 25%,
-            transparent 25%
-        ),
-        linear-gradient(
-            -45deg,
-            #f4ece6 25%,
-            transparent 25%
-        ),
-        linear-gradient(
-            45deg,
-            transparent 75%,
-            #f4ece6 75%
-        ),
-        linear-gradient(
-            -45deg,
-            transparent 75%,
-            #f4ece6 75%
-        );
-
-    background-size: 24px 24px;
-    background-position:
-        0 0,
-        0 12px,
-        12px -12px,
-        -12px 0;
-
+    border-radius: 24px;
+    background: #f7f1eb;
+    overflow: hidden;       /* quan trọng */
     cursor: grab;
     touch-action: none;
     user-select: none;
@@ -875,13 +840,17 @@ html {
 .editor-stage.dragging {
     cursor: grabbing;
 }
+.editor-crop {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    border-radius: inherit;
+    z-index: 1;
+}
 
 #editor-photo {
     position: absolute;
-    z-index: 1;
-
     max-width: none;
-
     pointer-events: none;
     user-select: none;
 }
@@ -890,12 +859,9 @@ html {
     position: absolute;
     inset: 0;
     z-index: 2;
-
     width: 100%;
     height: 100%;
-
-    object-fit: contain;
-
+    object-fit: cover;   /* frame 16:9 sẽ phủ kín */
     pointer-events: none;
     user-select: none;
 }
@@ -905,52 +871,31 @@ html {
     align-items: center;
     justify-content: center;
     gap: 12px;
-
     margin-top: 16px;
 }
 
 .editor-controls button {
-    min-width: 48px;
+    min-width: 52px;
     min-height: 44px;
     padding: 0 16px;
-
     border: 1px solid rgba(111, 29, 44, 0.18);
     border-radius: 999px;
-
     background: #fffdf9;
     color: var(--primary);
-
     font-weight: 700;
     cursor: pointer;
-
-    transition:
-        background 0.2s ease,
-        color 0.2s ease,
-        transform 0.2s ease;
+    transition: 0.2s ease;
 }
 
 .editor-controls button:hover {
-    transform: translateY(-2px);
     background: var(--primary);
-    color: #fff8f2;
+    color: #fff;
+    transform: translateY(-2px);
 }
 
 @media (max-width: 600px) {
-    .image-editor {
-        padding: 12px;
-    }
-
     .editor-stage {
         width: 100%;
-        border-radius: 16px;
-    }
-
-    .editor-controls {
-        gap: 8px;
-    }
-
-    .editor-controls button {
-        min-height: 42px;
-        padding: 0 13px;
+        border-radius: 18px;
     }
 }

@@ -198,33 +198,27 @@
                                     </p>
 
                                     <div class="editor-stage" id="editor-stage">
-                                        <img
-                                            id="editor-photo"
-                                            src=""
-                                            alt="Ảnh đang chỉnh"
-                                            draggable="false"
-                                        >
+                                        <div class="editor-crop" id="editor-crop">
+                                            <img
+                                                id="editor-photo"
+                                                src=""
+                                                alt="Ảnh đang chỉnh"
+                                                draggable="false"
+                                            >
+                                        </div>
 
                                         <img
                                             id="editor-frame"
-                                            src="{{ asset('assets/frames/frame1.png') }}"
+                                            src="{{ asset('assets/frames/memory-frame-16x9.png') }}"
                                             alt=""
                                             draggable="false"
                                         >
                                     </div>
 
                                     <div class="editor-controls">
-                                        <button type="button" id="zoom-out">
-                                            −
-                                        </button>
-
-                                        <button type="button" id="reset-photo">
-                                            Đặt lại
-                                        </button>
-
-                                        <button type="button" id="zoom-in">
-                                            ＋
-                                        </button>
+                                        <button type="button" id="zoom-out">−</button>
+                                        <button type="button" id="reset-photo">Đặt lại</button>
+                                        <button type="button" id="zoom-in">＋</button>
                                     </div>
                                 </div>
 
@@ -575,11 +569,12 @@ document.addEventListener('DOMContentLoaded', () => {
         try {
             await waitForImage(frame);
 
-            const outputSize = 1080;
+            const canvasWidth = 1600;
+            const canvasHeight = 900;
 
             const canvas = document.createElement('canvas');
-            canvas.width = outputSize;
-            canvas.height = outputSize;
+            canvas.width = canvasWidth;
+            canvas.height = canvasHeight;
 
             const context = canvas.getContext('2d');
 
@@ -590,7 +585,8 @@ document.addEventListener('DOMContentLoaded', () => {
             context.fillRect(0, 0, outputSize, outputSize);
 
             const stageSize = getStageSize();
-            const outputRatio = outputSize / stageSize.width;
+            const outputRatioX = canvasWidth / stageSize.width;
+            const outputRatioY = canvasHeight / stageSize.height;
 
             const displayedWidth = naturalWidth * scale;
             const displayedHeight = naturalHeight * scale;
@@ -599,28 +595,28 @@ document.addEventListener('DOMContentLoaded', () => {
                 stageSize.width / 2
                 - displayedWidth / 2
                 + offsetX
-            ) * outputRatio;
+            ) * outputRatioX;
 
             const drawY = (
                 stageSize.height / 2
                 - displayedHeight / 2
                 + offsetY
-            ) * outputRatio;
+            ) * outputRatioY;
 
             context.drawImage(
                 photo,
                 drawX,
                 drawY,
-                displayedWidth * outputRatio,
-                displayedHeight * outputRatio
+                displayedWidth * outputRatioX,
+                displayedHeight * outputRatioY
             );
 
             context.drawImage(
                 frame,
                 0,
                 0,
-                outputSize,
-                outputSize
+                canvasWidth,
+                canvasHeight
             );
 
             canvas.toBlob(blob => {
