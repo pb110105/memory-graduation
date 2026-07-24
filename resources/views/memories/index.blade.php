@@ -565,8 +565,8 @@ document.addEventListener('DOMContentLoaded', () => {
         try {
             await waitForImage(frame);
 
-            const canvasWidth = 1000;
-            const canvasHeight = 1920;
+            const canvasWidth = 900;
+            const canvasHeight = 1600;
 
             const canvas = document.createElement('canvas');
             canvas.width = canvasWidth;
