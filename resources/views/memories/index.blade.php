@@ -228,10 +228,23 @@
                                 </p>
 
                                 @if ($post->image_path)
+                                    @php
+                                        $postImageUrl = str_starts_with(
+                                            $post->image_path,
+                                            'http://'
+                                        ) || str_starts_with(
+                                            $post->image_path,
+                                            'https://'
+                                        )
+                                            ? $post->image_path
+                                            : asset('storage/' . $post->image_path);
+                                    @endphp
+
                                     <img
                                         class="post-image"
-                                        src="{{ asset('storage/' . $post->image_path) }}"
-                                        alt=""
+                                        src="{{ $postImageUrl }}"
+                                        alt="Ảnh kỷ niệm của {{ $post->sender_name }}"
+                                        loading="lazy"
                                         onerror="this.remove()"
                                     >
                                 @endif
