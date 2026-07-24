@@ -146,6 +146,7 @@
                             </div>
 
                             <form
+                                id="memory-editor-form"
                                 action="{{ route('memories.store') }}"
                                 method="POST"
                                 enctype="multipart/form-data"
@@ -180,18 +181,76 @@
                                 <div class="upload-box">
                                     <input
                                         type="file"
-                                        id="image"
-                                        name="image"
-                                        accept="image/*"
+                                        id="image-source"
+                                        accept="image/jpeg,image/png,image/webp"
                                     >
 
-                                    <label for="image">
+                                    <label for="image-source">
                                         <span class="upload-icon">＋</span>
                                         <strong>Chọn hoặc chụp ảnh</strong>
                                         <small>JPG, PNG hoặc WEBP</small>
                                     </label>
                                 </div>
 
+                                <div class="image-editor" id="image-editor" hidden>
+                                    <p class="editor-hint">
+                                        Kéo ảnh để căn chỉnh. Dùng nút − và ＋ để thu phóng.
+                                    </p>
+
+                                    <div class="editor-stage" id="editor-stage">
+                                        <img
+                                            id="editor-photo"
+                                            src=""
+                                            alt="Ảnh đang chỉnh"
+                                            draggable="false"
+                                        >
+
+                                        <img
+                                            id="editor-frame"
+                                            src="{{ asset('assets/frames/memory-frame.png') }}"
+                                            alt=""
+                                            draggable="false"
+                                        >
+                                    </div>
+
+                                    <div class="editor-controls">
+                                        <button type="button" id="zoom-out">
+                                            −
+                                        </button>
+
+                                        <button type="button" id="reset-photo">
+                                            Đặt lại
+                                        </button>
+
+                                        <button type="button" id="zoom-in">
+                                            ＋
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <!-- File ảnh đã ghép frame sẽ được đặt vào input này -->
+                                <input
+                                    type="file"
+                                    id="image-final"
+                                    name="image"
+                                    hidden
+                                >
+                                <div class="frame-picker">
+                                    <label class="frame-option">
+                                        <input type="radio" name="frame_choice" value="frame1" checked>
+                                        <img src="{{ asset('assets/frames/frame1.png') }}" alt="Frame 1">
+                                    </label>
+
+                                    <label class="frame-option">
+                                        <input type="radio" name="frame_choice" value="frame2">
+                                        <img src="{{ asset('assets/frames/frame2.png') }}" alt="Frame 2">
+                                    </label>
+
+                                    <label class="frame-option">
+                                        <input type="radio" name="frame_choice" value="frame3">
+                                        <img src="{{ asset('assets/frames/frame3.png') }}" alt="Frame 3">
+                                    </label>
+                                </div>
                                 <button type="submit" class="submit-button">
                                     Gửi lời chúc
                                 </button>
@@ -270,5 +329,346 @@
             </div>
         </section>
     </main>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('memory-editor-form');
+
+    if (!form) {
+        return;
+    }
+
+    const sourceInput = document.getElementById('image-source');
+    const finalInput = document.getElementById('image-final');
+
+    const editor = document.getElementById('image-editor');
+    const stage = document.getElementById('editor-stage');
+
+    const photo = document.getElementById('editor-photo');
+    const frame = document.getElementById('editor-frame');
+
+    const zoomInButton = document.getElementById('zoom-in');
+    const zoomOutButton = document.getElementById('zoom-out');
+    const resetButton = document.getElementById('reset-photo');
+
+    const submitButton = form.querySelector('.submit-button');
+
+    let naturalWidth = 0;
+    let naturalHeight = 0;
+
+    let baseScale = 1;
+    let scale = 1;
+
+    let offsetX = 0;
+    let offsetY = 0;
+
+    let dragging = false;
+    let pointerStartX = 0;
+    let pointerStartY = 0;
+    let originalOffsetX = 0;
+    let originalOffsetY = 0;
+
+    let imageSelected = false;
+
+    function getStageSize() {
+        return {
+            width: stage.clientWidth,
+            height: stage.clientHeight,
+        };
+    }
+
+    function clampOffsets() {
+        const stageSize = getStageSize();
+
+        const imageWidth = naturalWidth * scale;
+        const imageHeight = naturalHeight * scale;
+
+        const maxOffsetX = Math.max(
+            0,
+            (imageWidth - stageSize.width) / 2
+        );
+
+        const maxOffsetY = Math.max(
+            0,
+            (imageHeight - stageSize.height) / 2
+        );
+
+        offsetX = Math.max(
+            -maxOffsetX,
+            Math.min(maxOffsetX, offsetX)
+        );
+
+        offsetY = Math.max(
+            -maxOffsetY,
+            Math.min(maxOffsetY, offsetY)
+        );
+    }
+
+    function renderPhoto() {
+        if (!imageSelected) {
+            return;
+        }
+
+        clampOffsets();
+
+        const stageSize = getStageSize();
+
+        const imageWidth = naturalWidth * scale;
+        const imageHeight = naturalHeight * scale;
+
+        photo.style.width = `${imageWidth}px`;
+        photo.style.height = `${imageHeight}px`;
+
+        photo.style.left = `${
+            stageSize.width / 2
+            - imageWidth / 2
+            + offsetX
+        }px`;
+
+        photo.style.top = `${
+            stageSize.height / 2
+            - imageHeight / 2
+            + offsetY
+        }px`;
+    }
+
+    function resetPhoto() {
+        if (!imageSelected) {
+            return;
+        }
+
+        const stageSize = getStageSize();
+
+        baseScale = Math.max(
+            stageSize.width / naturalWidth,
+            stageSize.height / naturalHeight
+        );
+
+        scale = baseScale;
+        offsetX = 0;
+        offsetY = 0;
+
+        renderPhoto();
+    }
+
+    sourceInput.addEventListener('change', () => {
+        const file = sourceInput.files[0];
+
+        if (!file) {
+            return;
+        }
+
+        if (!file.type.startsWith('image/')) {
+            alert('Vui lòng chọn một file ảnh.');
+            sourceInput.value = '';
+            return;
+        }
+
+        const objectUrl = URL.createObjectURL(file);
+
+        photo.onload = () => {
+            naturalWidth = photo.naturalWidth;
+            naturalHeight = photo.naturalHeight;
+
+            imageSelected = true;
+            editor.hidden = false;
+
+            resetPhoto();
+
+            URL.revokeObjectURL(objectUrl);
+        };
+
+        photo.src = objectUrl;
+    });
+
+    stage.addEventListener('pointerdown', event => {
+        if (!imageSelected) {
+            return;
+        }
+
+        dragging = true;
+
+        pointerStartX = event.clientX;
+        pointerStartY = event.clientY;
+
+        originalOffsetX = offsetX;
+        originalOffsetY = offsetY;
+
+        stage.classList.add('dragging');
+        stage.setPointerCapture(event.pointerId);
+    });
+
+    stage.addEventListener('pointermove', event => {
+        if (!dragging) {
+            return;
+        }
+
+        offsetX = originalOffsetX
+            + event.clientX
+            - pointerStartX;
+
+        offsetY = originalOffsetY
+            + event.clientY
+            - pointerStartY;
+
+        renderPhoto();
+    });
+
+    function stopDragging(event) {
+        dragging = false;
+        stage.classList.remove('dragging');
+
+        if (
+            event.pointerId !== undefined
+            && stage.hasPointerCapture(event.pointerId)
+        ) {
+            stage.releasePointerCapture(event.pointerId);
+        }
+    }
+
+    stage.addEventListener('pointerup', stopDragging);
+    stage.addEventListener('pointercancel', stopDragging);
+
+    zoomInButton.addEventListener('click', () => {
+        if (!imageSelected) {
+            return;
+        }
+
+        scale *= 1.1;
+        renderPhoto();
+    });
+
+    zoomOutButton.addEventListener('click', () => {
+        if (!imageSelected) {
+            return;
+        }
+
+        scale = Math.max(baseScale, scale / 1.1);
+        renderPhoto();
+    });
+
+    resetButton.addEventListener('click', resetPhoto);
+
+    window.addEventListener('resize', () => {
+        if (imageSelected) {
+            resetPhoto();
+        }
+    });
+
+    function waitForImage(image) {
+        return new Promise((resolve, reject) => {
+            if (image.complete && image.naturalWidth > 0) {
+                resolve();
+                return;
+            }
+
+            image.addEventListener('load', resolve, {
+                once: true,
+            });
+
+            image.addEventListener('error', reject, {
+                once: true,
+            });
+        });
+    }
+
+    form.addEventListener('submit', async event => {
+        if (!imageSelected) {
+            return;
+        }
+
+        event.preventDefault();
+
+        submitButton.disabled = true;
+        submitButton.textContent = 'Đang xử lý ảnh...';
+
+        try {
+            await waitForImage(frame);
+
+            const outputSize = 1080;
+
+            const canvas = document.createElement('canvas');
+            canvas.width = outputSize;
+            canvas.height = outputSize;
+
+            const context = canvas.getContext('2d');
+
+            context.imageSmoothingEnabled = true;
+            context.imageSmoothingQuality = 'high';
+
+            context.fillStyle = '#ffffff';
+            context.fillRect(0, 0, outputSize, outputSize);
+
+            const stageSize = getStageSize();
+            const outputRatio = outputSize / stageSize.width;
+
+            const displayedWidth = naturalWidth * scale;
+            const displayedHeight = naturalHeight * scale;
+
+            const drawX = (
+                stageSize.width / 2
+                - displayedWidth / 2
+                + offsetX
+            ) * outputRatio;
+
+            const drawY = (
+                stageSize.height / 2
+                - displayedHeight / 2
+                + offsetY
+            ) * outputRatio;
+
+            context.drawImage(
+                photo,
+                drawX,
+                drawY,
+                displayedWidth * outputRatio,
+                displayedHeight * outputRatio
+            );
+
+            context.drawImage(
+                frame,
+                0,
+                0,
+                outputSize,
+                outputSize
+            );
+
+            canvas.toBlob(blob => {
+                if (!blob) {
+                    alert('Không thể tạo ảnh đã ghép frame.');
+
+                    submitButton.disabled = false;
+                    submitButton.textContent = 'Gửi lời chúc';
+                    return;
+                }
+
+                const editedFile = new File(
+                    [blob],
+                    `memory-${Date.now()}.jpg`,
+                    {
+                        type: 'image/jpeg',
+                    }
+                );
+
+                const transfer = new DataTransfer();
+                transfer.items.add(editedFile);
+
+                finalInput.files = transfer.files;
+
+                form.submit();
+            }, 'image/jpeg', 0.9);
+        } catch (error) {
+            console.error(error);
+
+            alert(
+                'Không tải được frame. Kiểm tra file '
+                + 'public/assets/frames/memory-frame.png'
+            );
+
+            submitButton.disabled = false;
+            submitButton.textContent = 'Gửi lời chúc';
+        }
+    });
+});
+</script>
 </body>
 </html>
