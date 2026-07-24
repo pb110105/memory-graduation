@@ -231,7 +231,8 @@
                                     <img
                                         class="post-image"
                                         src="{{ asset('storage/' . $post->image_path) }}"
-                                        alt="Ảnh kỷ niệm của {{ $post->sender_name }}"
+                                        alt=""
+                                        onerror="this.remove()"
                                     >
                                 @endif
 
